@@ -1,0 +1,33 @@
+spring:
+  jpa:
+    hibernate:
+      show_sql: true
+      format_sql: true
+  r2dbc:
+    url: r2dbc:pool:postgres://127.0.0.1:5433/aws-sqs?schema=app-aws-sqs-db
+    username: root
+    password: root
+    properties:
+      schemas: app-aws-sqs-db
+
+  flyway:
+    url: jdbc:postgresql://127.0.0.1:5433/aws-sqs
+    user: root
+    password: root
+    schemas: app-aws-sqs-db
+    locations: classpath:db/migration
+
+  cloud:
+    aws:
+      credentials:
+        access-key: <TOP-SECRET>
+        secret-key: <TOP-SECRET>
+      region:
+        static: eu-north-1
+sqs:
+  notifications:
+    queue:
+      name: aws-sqs.fifo
+      region: eu-north-1
+
+

@@ -1,0 +1,1 @@
+docker copmose up
